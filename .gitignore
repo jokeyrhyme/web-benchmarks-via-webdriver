@@ -1,0 +1,6 @@
+# dependencies
+node_modules
+
+# output files
+coverage
+dist
