@@ -1,6 +1,6 @@
 {
   "name": "webdriver-benchmarker",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "uses webdriver to execute web platform benchmarks",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,7 @@
     "name": "Ron F Waldon",
     "url": "https://github.com/jokeyrhyme"
   },
-  "repository": "",
+  "repository": "https://github.com/jokeyrhyme/web-benchmarks-via-webdriver.git",
   "license": "MIT",
   "dependencies": {
     "async": "^0.9.0",
