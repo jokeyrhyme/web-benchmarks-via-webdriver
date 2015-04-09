@@ -8,5 +8,8 @@ var async = require('async');
 
 async.series([
   require('./lib/benchmarks/html5test'),
-  require('./lib/benchmarks/css3test')
+  require('./lib/benchmarks/css3test'),
+  require('./lib/benchmarks/kangax-es6'),
+  require('./lib/benchmarks/kangax-es7'),
+  require('./lib/benchmarks/octane')
 ]);
