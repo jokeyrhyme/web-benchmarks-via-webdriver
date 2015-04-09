@@ -13,12 +13,13 @@ var browsers = [
 
 var tests = [
   // standards compliance
-  require('./lib/benchmarks/html5test'),
   require('./lib/benchmarks/css3test'),
+  require('./lib/benchmarks/html5test'),
   require('./lib/benchmarks/kangax-es6'),
   require('./lib/benchmarks/kangax-es7'),
   require('./lib/benchmarks/test262'),
   // javascript performance
+  require('./lib/benchmarks/jetstream'),
   require('./lib/benchmarks/octane')
 ];
 
