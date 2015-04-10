@@ -21,6 +21,7 @@ var tests = [
   // javascript performance
   require('./lib/benchmarks/jetstream'),
   require('./lib/benchmarks/octane'),
+  require('./lib/benchmarks/robohornet'),
   require('./lib/benchmarks/speedometer')
 ];
 
