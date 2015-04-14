@@ -1,5 +1,9 @@
 'use strict';
 
+// Node.js built-ins
+
+var domain = require('domain');
+
 // 3rd-party modules
 
 var async = require('async');
@@ -50,15 +54,22 @@ browsers.forEach(function (browser) {
   return tests.forEach(function (test) {
     tasks.push(function (done) {
       var fn;
-      var driver = makeDriver(browser);
+      var d = domain.create();
+      var driver;
 
-      try {
+      d.on('error', function () {
+        console.error(browser, 'error during automation');
+        if (driver) {
+          driver.quit();
+        }
+        done();
+      });
+
+      d.run(function () {
+        driver = makeDriver(browser);
         fn = test(browser, driver);
         fn(done);
-      } catch (err) {
-        console.error(browser, 'error during automation');
-        done();
-      }
+      });
     });
   });
 });
