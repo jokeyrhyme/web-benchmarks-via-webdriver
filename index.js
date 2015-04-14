@@ -4,9 +4,15 @@
 
 var async = require('async');
 
+// our modules
+
+var makeDriver = require('./lib/driver');
+
 // this module
 
 var browsers = [
+  'ie',
+  'safari',
   'chrome',
   'firefox'
 ];
@@ -28,9 +34,32 @@ var tests = [
 
 var tasks = [];
 
+browsers = browsers.filter(function (browser) {
+  var driver;
+  try {
+    driver = makeDriver(browser);
+    driver.quit();
+    return true;
+  } catch (err) {
+    console.error(browser, 'cannot instantiate WebDriver');
+    return false;
+  }
+});
+
 browsers.forEach(function (browser) {
   return tests.forEach(function (test) {
-    tasks.push(test(browser));
+    tasks.push(function (done) {
+      var fn;
+      var driver = makeDriver(browser);
+
+      try {
+        fn = test(browser, driver);
+        fn(done);
+      } catch (err) {
+        console.error(browser, 'error during automation');
+        done();
+      }
+    });
   });
 });
 
