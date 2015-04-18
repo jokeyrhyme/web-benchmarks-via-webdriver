@@ -3,6 +3,7 @@
 // Node.js built-ins
 
 var domain = require('domain');
+var os = require('os');
 
 // 3rd-party modules
 
@@ -40,6 +41,9 @@ var tasks = [];
 
 browsers = browsers.filter(function (browser) {
   var driver;
+  if (browser === 'safari' && os.platform() !== 'darwin') {
+    return false; // no Safari testing without OSX
+  }
   try {
     driver = makeDriver(browser);
     driver.quit();
