@@ -13,7 +13,7 @@
   "repository": "https://github.com/jokeyrhyme/web-benchmarks-via-webdriver.git",
   "license": "MIT",
   "dependencies": {
-    "async": "^0.9.0",
-    "selenium-webdriver": "^2.45.1"
+    "async": "^2.1.4",
+    "selenium-webdriver": "^3.0.1"
   }
 }
